@@ -1,0 +1,341 @@
+{% extends 'index.html' %} 
+{% load static %}
+{% block content %}
+
+<div class="main-body">
+      <div class="page-wrapper">
+            <div class="row">
+                <div class="col-md-12 col-xl-6">
+                        <div class="card card-social">
+                            <div class="card-block border-bottom">
+                                <div class="row align-items-center justify-content-center">
+                                    <div class="col-auto">
+                                        <i class="fab fa-facebook-f text-primary f-36"></i>
+                                    </div>
+                                    <div class="col text-right">
+                                        <h4>TẤT TOÁN HỢP ĐỒNG</h4>
+                                        <h5 class="text-c-green mb-0">Số thư đã in: {{total_confirm_payment}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-block">
+                                <div class="row align-items-center justify-content-center card-active">
+                                    <div class="col-6">
+                                        <h6 class="text-center m-b-10"><span class="text-muted m-r-5"></span><a href="#!" class="label theme-bg text-white f-12" data-toggle="modal" data-target="#Contract">Contract</a></h6>
+                                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="Contract">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Please input contract code:</h4>
+                                                    </div>
+                                                    <form action="{% url 'csletter' %}" method="post" class="needs-validation" novalidate>
+                                                        {% csrf_token %}
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-md-12 mb-6">
+                                                                    <div class="form-group">
+                                                                        <label for="export_contract_code"><b>Contract code:</b></label>
+                                                                        <textarea class="form-control" id="export_contract_code" rows="4" name="contract_code" placeholder='Example: 0000000001,00000000002'required></textarea>
+                                                                    </div>
+                                                                    <div class="invalid-feedback">
+                                                                        Please input your parameter!
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-success">Search</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-c-theme" role="progressbar" style="width:100%;height:6px;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h6 class="text-center m-b-10"><span class="text-muted m-r-5"></span><a href="#!" class="label theme-bg2 text-white f-12" data-toggle="modal" data-target="#Client_name">Client name</a></h6>
+                                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="Client_name">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Please input client name to export:</h4>
+                                                    </div>
+                                                    <form action="{% url 'confirm_payment_by_name' %}" method="post" class="needs-validation" novalidate>
+                                                        {% csrf_token %}
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-md-12 mb-6">
+                                                                    <div class="form-group">
+                                                                        <label for="export_client_name"><b>Client name:</b></label>
+                                                                        <textarea class="form-control" id="export_client_name" rows="4" name="export_client_name" placeholder='Example: NGUYỄN VĂN A,NGUYỄN VĂN B ' required></textarea>
+                                                                    </div>
+                                                                    <div class="invalid-feedback">
+                                                                        Please input your parameter!
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-danger">Export</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-c-theme2" role="progressbar" style="width:100%;height:6px;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-6">
+                        <div class="card card-social">
+                            <div class="card-block border-bottom">
+                                <div class="row align-items-center justify-content-center">
+                                    <div class="col-auto">
+                                        <i class="fab fa-twitter text-c-blue f-36"></i>
+                                    </div>
+                                    <div class="col text-right">
+                                        <h4>TẤT TOÁN HỢP ĐỒNG - LỊCH SỬ THANH TOÁN</h4>
+                                        <h5 class="text-c-purple mb-0">Total letter</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-block">
+                                <div class="row align-items-center justify-content-center card-active">
+                                    <div class="col-6">
+                                            <h6 class="text-center m-b-10"><span class="text-muted m-r-5"></span><a href="#!" class="label theme-bg text-white f-12" >Contract</a></h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-c-green" role="progressbar" style="width:100%;height:6px;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h6 class="text-center m-b-10"><span class="text-muted m-r-5"></span><a href="#!" class="label theme-bg2 text-white f-12" >Client name</a></h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-c-blue" role="progressbar" style="width:100%;height:6px;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card card-social">
+                            <div class="card-block border-bottom">
+                                <div class="row align-items-center justify-content-center">
+                                    <div class="col-auto">
+                                        <i class="fab fa-google-plus-g text-c-red f-36"></i>
+                                    </div>
+                                    <div class="col text-right">
+                                        <h4>THƯ PHÚC ĐÁP</h4>
+                                        <h5 class="text-c-blue mb-0">Total letter</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-block">
+                                <div class="row align-items-center justify-content-center card-active">
+                                    <div class="col-6">
+                                        <h6 class="text-center m-b-10"><span class="text-muted m-r-5"></span><a href="#!" class="label theme-bg text-white f-12" >Contract</a></h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-c-theme" role="progressbar" style="width:100%;height:6px;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h6 class="text-center m-b-10"><span class="text-muted m-r-5"></span><a href="#!" class="label theme-bg2 text-white f-12" >Client name</a></h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-c-theme2" role="progressbar" style="width:100%;height:6px;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card card-social">
+                            <div class="card-block border-bottom">
+                                <div class="row align-items-center justify-content-center">
+                                    <div class="col-auto">
+                                        <i class="fab fa-github-square text-c-blue f-36"></i>
+                                    </div>
+                                    <div class="col text-right">
+                                        <h4>THƯ PHÚC ĐÁP - NỢ</h4>
+                                        <h5 class="text-c-red mb-0">Total letter </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-block">
+                                <div class="row align-items-center justify-content-center card-active">
+                                    <div class="col-6">
+                                        <h6 class="text-center m-b-10"><span class="text-muted m-r-5"></span><a href="#!" class="label theme-bg text-white f-12" >Contract</a></h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-c-theme" role="progressbar" style="width:100%;height:6px;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h6 class="text-center m-b-10"><span class="text-muted m-r-5"></span><a href="#!" class="label theme-bg2 text-white f-12" >Client name</a></h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-c-theme2" role="progressbar" style="width:100%;height:6px;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="card card-social">
+                            <div class="card-block border-bottom">
+                                <div class="row align-items-center justify-content-center">
+                                    <div class="col-auto">
+                                        <i class="fab fa-google-plus text-c-red f-36"></i>
+                                    </div>
+                                    <div class="col text-right">
+                                        <h4>THƯ PHÚC ĐÁP - GILF</h4>
+                                        <h5 class="text-c-red mb-0">Total letter </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-block">
+                                <div class="row align-items-center justify-content-center card-active">
+                                    <div class="col-6">
+                                        <h6 class="text-center m-b-10"><span class="text-muted m-r-5"></span><a href="#!" class="label theme-bg text-white f-12" >Contract</a></h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-c-theme" role="progressbar" style="width:100%;height:6px;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h6 class="text-center m-b-10"><span class="text-muted m-r-5"></span><a href="#!" class="label theme-bg2 text-white f-12" >Client name</a></h6>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-c-theme2" role="progressbar" style="width:100%;height:6px;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            {% if records %}
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card Recent-Users">
+                            <div class="card-header">
+                                <h5>Client information</h5>
+                            </div>
+                            <div class="card-header">
+                                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#search_contract" >Export All</button>
+                                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="search_contract">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Please input contract code:</h4>
+                                            </div>
+                                            <form action="{% url 'csletter' %}" method="post" class="needs-validation" novalidate>
+                                                {% csrf_token %}
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12 mb-6">
+                                                            <div class="form-group">
+                                                                <label for="search_contract_code"><b>Contract code:</b></label>
+                                                                <textarea class="form-control" id="search_contract_code" rows="4" name="contract_code" placeholder='Example: 0000000001,00000000002' required></textarea>
+                                                            </div>
+                                                            <div class="invalid-feedback">
+                                                                Please input your parameter!
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-success">Search</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#search_contract" >Export Selected Contract</button>
+                            </div>
+                            <div class="card-block">
+                                <div class="table-responsive">
+                                        <table id="reportTable" class="display table nowrap table-hover">
+                                            <thead>
+                                                    <tr class="table-info">
+                                                        <th>CLIENT_NAME</th>
+                                                        <th>CONTRACT_CODE</th>
+                                                        <th>SIGN_DATE</th>
+                                                        <th>CONTRACT_DATE</th>
+                                                        <th>EXPORT</th>
+                                                        <th>CHOOSE</th>
+                                                    </tr>
+                                            </thead>
+                                            <tbody>
+                                                    {% for record in records %}
+                                                    <tr>
+                                                        <td>{{ record.CLIENT_NAME }}</td>
+                                                        <td>{{ record.CONTRACT_CODE }}</td>
+                                                        <td>{{ record.SIGN_DATE }}</td>
+                                                        <td>{{ record.CONTRACT_DATE }}</td>
+                                                        <td>
+                                                            <a href="#!" class="label theme-bg2 text-white f-12" data-toggle="modal" data-target="#export_report_{{report.ID}}_{{report.NAME_DISPLAY}}">Export</a>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group d-inline">
+                                                                <div class="checkbox checkbox-success checkbox-fill d-inline">
+                                                                    <input type="checkbox" name="action_type" id="{{ record.CONTRACT_CODE }}" value="{{ record.CONTRACT_CODE }}">
+                                                                    <label for="{{ record.CONTRACT_CODE }}" class="cr"></label>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                            </tbody>
+                                        </table>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}              
+            
+            <div class="row">
+                <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header" id="vnp_header">
+                                    <h5>History of printing</h5>
+                            </div>
+                            <div class="card-block table-border-style">
+                                    <div class="table-responsive">
+                                        <table id="VNPostTable" class="table table-bordered table-hover">
+                                                <thead>
+                                                    <tr class="table-primary">
+                                                            <th>CONTRACT_CODE</th>
+                                                            <th>TYPE_LETTER</th>
+                                                            <th>REASON</th>
+                                                            <th>USER_NAME</th>
+                                                            <th>DATE_PRINT</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for history in history_data %}
+                                                    <tr>
+                                                            <td>{{ history.CONTRACT_CODE }}</td>
+                                                            <td>{{ history.TYPE_LETTER }}</td>
+                                                            <td>{{ history.REASON }}</td>
+                                                            <td>{{ history.USER_NAME }}</td>
+                                                            <td>{{ history.DATE_PRINT }}</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                        </table>
+                                    </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+      </div>
+</div>
+{% endblock %}
